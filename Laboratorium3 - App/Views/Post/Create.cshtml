@@ -1,0 +1,27 @@
+﻿@model Laboratorium3___App.Models.Post
+
+<h2>Utwórz Post</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Content" class="control-label"></label>
+        <input asp-for="Content" class="form-control" />
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Author" class="control-label"></label>
+        <input asp-for="Author" class="form-control" />
+        <span asp-validation-for="Author" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PublicationDate" class="control-label"></label>
+        <input asp-for="PublicationDate" class="form-control" type="date" />
+        <span asp-validation-for="PublicationDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Tags" class="control-label"></label>
+        <input asp-for="Tags" class="form-control" />
+        <span asp-validation-for="Tags" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Utwórz</button>
+</form>

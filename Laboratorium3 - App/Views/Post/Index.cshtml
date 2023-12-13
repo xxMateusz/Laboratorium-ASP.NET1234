@@ -1,0 +1,26 @@
+﻿@model List<Laboratorium3___App.Models.Post>
+
+<h2>Lista Postów</h2>
+
+<table class="table">
+    <tr>
+        <th>Treść</th>
+        <th>Autor</th>
+        <th>Data Publikacji</th>
+        <th>Tagi</th>
+        <th>Akcje</th>
+    </tr>
+    @foreach (var post in Model)
+    {
+        <tr>
+            <td>@post.Content</td>
+            <td>@post.Author</td>
+            <td>@post.PublicationDate.ToString("dd-MM-yyyy")</td>
+            <td>@string.Join(", ", post.Tags)</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@post.Id" class="btn btn-primary">Edytuj</a>
+                <a asp-action="Delete" asp-route-id="@post.Id" class="btn btn-danger">Usuń</a>
+            </td>
+        </tr>
+    }
+</table>

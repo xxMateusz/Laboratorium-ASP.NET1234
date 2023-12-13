@@ -1,0 +1,43 @@
+﻿@model Contact
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h2>Add Contact</h2>
+<form asp-controller="Contact" asp-action="Create" method="post">
+    @*<div asp-validation-summary="All"></div>*@
+    <div class="mb-3">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Phone"></label>
+        <input asp-for="Phone" class="form-control" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Birth"></label>
+        <input asp-for="Birth" class="form-control" />
+        <span asp-validation-for="Birth" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Priority"></label>
+        <select class="form-control" asp-for="Priority" asp-items="@Html.GetEnumSelectList<Priority>()"></select>
+        <span asp-validation-for="Priority" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="OrganizationId"></label>
+        <select class="form-control" asp-for="OrganizationId" asp-items="@Model.OrganizationList"></select>
+        <a asp-action="Create" asp-controller="Organization">Add new organization</a>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+    <button type="reset" class="btn btn-secondary">Clear</button>
+</form>

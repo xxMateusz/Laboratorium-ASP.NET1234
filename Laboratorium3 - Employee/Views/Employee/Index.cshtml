@@ -1,0 +1,41 @@
+﻿@model List<Employee>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2>Employee List</h2>
+<a class="btn btn-primary" asp-controller="Employee" asp-action="Create">Add employee</a>
+
+@if (Model.Count > 0)
+{
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model[0].Name)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Surname)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Pesel)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Position)</th>
+            <th>@Html.DisplayNameFor(model => model[0].Department)</th>
+            <th>@Html.DisplayNameFor(model => model[0].EmploymentDate)</th>
+            <th>@Html.DisplayNameFor(model => model[0].SackingDate)</th>
+            <th>Actions</th>
+        </tr>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Surname</td>
+                <td>@item.Pesel</td>
+                <td>@item.Position.GetDisplayName()</td>
+                <td>@item.Department.GetDisplayName()</td>
+                <td>@item.EmploymentDate</td>
+                <td>@item.SackingDate</td>
+                <td>
+                    <a asp-controller="Employee" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                    <a asp-controller="Employee" asp-action="Update" asp-route-id="@item.Id" class="btn btn-outline-info">Update</a>
+                    <a asp-controller="Employee" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+}
